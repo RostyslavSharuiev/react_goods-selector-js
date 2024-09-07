@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import cn from 'classnames';
 
 import 'bulma/css/bulma.css';
 import './App.scss';
@@ -44,15 +45,15 @@ export const App = () => {
             <tr
               key={good}
               data-cy="Good"
-              className={
-                good === selectedGood ? 'has-background-success-light' : ''
-              }
+              className={cn({
+                'has-background-success-light': good === selectedGood,
+              })}
             >
               <td>
                 <button
                   data-cy={good === selectedGood ? 'RemoveButton' : 'AddButton'}
                   type="button"
-                  className={`button ${good === selectedGood && 'is-info'}`}
+                  className={cn('button', { 'is-info': good === selectedGood })}
                   onClick={() => handleClick(good)}
                 >
                   {good === selectedGood ? '-' : '+'}
